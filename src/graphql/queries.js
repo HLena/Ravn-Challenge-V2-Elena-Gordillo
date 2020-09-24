@@ -1,36 +1,63 @@
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
+import PeopleList from '../components/PeopleList'
 
-const ALL_PEOPLE = gql`
-  {
-    allPeople{
-      people{
-        id
-        name
-        gender     
+const PEOPLE_QUERY = gql`
+  query People($cursor: String){
+    allPeople(first:5, after: $cursor){
+      edges{
+        node{
+          id
+          name
+          gender
+        }
+      }
+      pageInfo{
+        endCursor
+        hasNextPage
       }
     }
   }
 `;
 
 const GetAllPeople = () => {
-  const {loading, error, data }= useQuery(ALL_PEOPLE);
-  if (loading) return <p> Loading...</p>;
-  if (error) return <p> Error :(</p>;
+  const { data, fetchMore, loading, networkStatus}   = useQuery(
+    PEOPLE_QUERY);
+
+  if (loading) return <p>Loading...</p>
+
   return (
-    <>
-      <h2>My first Apollo app <span role='img' aria-label='spaceships'>🚀</span></h2>
-      {
-        data.allPeople.people.map(({ id, name }) => (
-          <div key={id} style={{background:"yelow", margin:".3em"}}>
-            <p>
-              {id}: {name}
-            </p>
-        </div>
-        ))
+    <PeopleList
+      networkStatus={networkStatus}
+      entries={data.allPeople.edges || []}
+      onLoadMore = { () =>
+        fetchMore({
+          variables:{
+           cursor: data.allPeople.pageInfo.endCursor
+          },
+          updateQuery: (prev, {fetchMoreResult}) => {
+            const newEdges = fetchMoreResult.allPeople.edges;
+            const pageInfo = fetchMoreResult.allPeople.pageInfo;
+
+            return newEdges.length ? {
+              allPeople: {
+                __typename: prev.allPeople.__typename,
+                edges: [...prev.allPeople.edges,...newEdges],
+                pageInfo
+              }
+            }
+          : prev;
+          }
+        })
       }
-    </>
+    />
   )
 };
+
 export default GetAllPeople;
+
+
+
+
+
