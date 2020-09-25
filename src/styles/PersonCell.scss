@@ -1,0 +1,33 @@
+.person-cell{
+  position: relative;
+  width: 350px;
+  height: 69px;
+  display: flex;
+  flex-wrap: wrap;
+  .person-detail{
+    margin: 16px;
+    height: 37px;
+    h2{
+      font-weight: bold;
+      font-size: 17px;
+      line-height: 20px;
+      color: $TextDark;
+    }
+    p{
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      color: $TextLight;
+    }
+  }
+  img{
+    position: absolute;
+    left:auto;
+    top: 30px;
+    right: 24px;
+    bottom: 27px;
+    height: 12px;
+    width: 7.41px;
+  }
+}
+
