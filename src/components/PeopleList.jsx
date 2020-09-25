@@ -1,25 +1,22 @@
 import React from 'react';
-
-
-const PeopleCell = ({name, homeworld, species}) =>{
-  
-}
+import PersonCell from './PersonCell'
 
 const PeopleList = ({entries, onLoadMore, networkStatus}) => {
   return (
-    <div>
-      <ul>
+    <>
         {
           entries.map(({node}) => {
            return (
-             <li key={node.id}>{node.name}</li>
+             <PersonCell 
+              key={node.id} 
+              node={node}
+              />
            )
           },onLoadMore())
         }
-      </ul>
       {networkStatus === 3 ? <div>Loading</div> : null}
 
-    </div>
+    </>
   )
 }
 
