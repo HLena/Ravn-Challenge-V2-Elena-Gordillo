@@ -1,9 +1,13 @@
 import React from 'react';
 
+
+const PeopleCell = ({name, homeworld, species}) =>{
+  
+}
+
 const PeopleList = ({entries, onLoadMore, networkStatus}) => {
   return (
     <div>
-      <h2>People List</h2>
       <ul>
         {
           entries.map(({node}) => {
