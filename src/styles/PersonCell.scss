@@ -4,6 +4,7 @@
   height: 69px;
   display: flex;
   flex-wrap: wrap;
+  cursor: pointer;
   .person-detail{
     margin: 16px;
     height: 37px;
@@ -28,6 +29,7 @@
     bottom: 27px;
     height: 12px;
     width: 7.41px;
+    cursor: pointer;
   }
 }
 
