@@ -1,6 +1,7 @@
 .person-cell{
   position: relative;
-  width: 350px;
+  max-width: 350px;
+  min-width: 100px;
   height: 69px;
   display: flex;
   flex-wrap: wrap;
@@ -31,5 +32,9 @@
     width: 7.41px;
     cursor: pointer;
   }
+}
+
+.person-cell:hover{
+  background: $HoverColor;
 }
 
