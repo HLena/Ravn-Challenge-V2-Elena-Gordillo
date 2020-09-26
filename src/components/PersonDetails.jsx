@@ -1,10 +1,10 @@
 import { gql, useQuery } from '@apollo/client';
 import { withRouter } from 'react-router-dom';
-
 import React from 'react'
 
 import LoadingCell from '../components/LoadingCell'
-import {DataCell, SectionHeader }from '../components/DataCell'
+import DataCell from '../components/DataCell'
+import SectionHeader from '../components/SectionHeader'
 
 
 const PERSON_QUERY = gql`

@@ -9,7 +9,4 @@ export const LoadingCell = () => (
     </span>
   )
 
-
-  
-
 export default LoadingCell;

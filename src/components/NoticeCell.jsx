@@ -5,5 +5,4 @@ export const NoticeCell = () => (
       Failed to load Data
   </span>
 )
-
 export default NoticeCell;

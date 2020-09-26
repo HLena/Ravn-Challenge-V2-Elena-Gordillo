@@ -1,7 +1,7 @@
 import React from 'react';
-import PersonCell from './PersonCell'
-
 import { Link } from 'react-router-dom';
+
+import PersonCell from './PersonCell'
 
 const PeopleList = ({entries, onLoadMore, networkStatus,loading}) => {
   return (
@@ -21,5 +21,4 @@ const PeopleList = ({entries, onLoadMore, networkStatus,loading}) => {
     </>
   )
 }
-
 export default PeopleList;

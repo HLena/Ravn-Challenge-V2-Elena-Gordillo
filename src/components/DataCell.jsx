@@ -1,9 +1,14 @@
 import React from 'react'
 
-export const DataCell = () => {
+const DataCell = ({title, value}) => {
   return (
-    <div>
-      
+    <div className="data-cell">
+      <h2 className="title-tx text">{title}</h2>
+      <h2 className="value-tx text">{value}</h2>
+      <hr className="line"/>
     </div>
   )
 }
+
+
+export default DataCell;

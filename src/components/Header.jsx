@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const Header = () => {
+const Header = () => {
   return (
-    <header className="nav-bar">
+    <header className="header">
       <h2 className="text" >People of Stars  Wars</h2>
     </header>
   )

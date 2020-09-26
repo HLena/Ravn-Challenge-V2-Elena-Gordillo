@@ -1,15 +1,9 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
-import { Link } from 'react-router-dom';
 
-
-// import Main from '../view/Main'
 import LoadingCell from '../components/LoadingCell'
 import NoticeCell from '../components/NoticeCell'
 import PeopleList from '../components/PeopleList';
-// import PersonCell from './PersonCell';
-// import {DataCell, SectionHeader }from '../components/DataCell'
-
 
 const PEOPLE_QUERY = gql`
   query People($cursor: String){
