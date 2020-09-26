@@ -1,18 +1,17 @@
 import React from 'react'
-import GetAllPeople from '../graphql/queries'
-import '../styles/Main.css'
+
+import Header from '../components/Header';
+import GetAllPeople from '../components/PeopleListQuery'
+import PersonDetails from '../components/PersonDetails';
+
+import '../styles/Main.scss';
 
 export const Main = () => {
   return (
     <>
-      <nav className="nav-bar">
-      <h2>People of Stars  Wars</h2>
-      </nav>
-      <aside className="people-container">
-        <GetAllPeople/>
-      </aside>
-      <main className="container"></main>
-      
+      <Header/>
+      <GetAllPeople/>
+      <PersonDetails/>
     </>
   )
 }
