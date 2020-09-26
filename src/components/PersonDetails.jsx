@@ -27,8 +27,8 @@ const PersonDetails = ({match:{params:{id}}}) => {
     data,
     loading,
     error} = useQuery(PERSON_QUERY,{ variables: {id: id }})
-  if (loading) return <main className="container"><LoadingCell/></main>;
   if (error) return <main className="container"></main>;
+  if (loading) return <main className="container"><LoadingCell/></main>;
     const {
       eyeColor,
       hairColor,
