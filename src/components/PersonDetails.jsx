@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import React from 'react'
 
 import LoadingCell from '../components/LoadingCell'
-import NoticeCell from '../components/NoticeCell'
 import {DataCell, SectionHeader }from '../components/DataCell'
 
 
@@ -24,31 +23,39 @@ const PERSON_QUERY = gql`
 }`;
 
 const PersonDetails = ({match:{params:{id}}}) => {
-  // const idPerson = id ? id : null;
   const {
     data,
     loading,
-    error} = useQuery(PERSON_QUERY,{variables: {id: id }})
+    error} = useQuery(PERSON_QUERY,{ variables: {id: id }})
+  if (loading) return <main className="container"><LoadingCell/></main>;
+  if (error) return <main className="container"></main>;
+    const {
+      eyeColor,
+      hairColor,
+      skinColor,
+      birthYear,
+      vehicleConnection:{vehicles},
+    } = data.person;
   return (
     <main className="container">
       {
-        loading ? <LoadingCell/> : 
-        ( error ? <NoticeCell/> :
-          (
             <>
             <SectionHeader text={"General Information"}/>
-            <DataCell title={"EyeColor"} value={data.person.eyeColor}/>
-            <DataCell title={"HairColor"} value={data.person.hairColor}/>
-            <DataCell title={"SkinColor"} value={data.person.skinColor}/>
-            <DataCell title={"BirthColor"} value={data.person.birthYear}/>
-            { data.vehicleConnection && <div>hola</div>}
+            <DataCell title={"EyeColor"} value={eyeColor}/>
+            <DataCell title={"HairColor"} value={hairColor}/>
+            <DataCell title={"SkinColor"} value={skinColor}/>
+            <DataCell title={"BirthColor"} value={birthYear}/>
+            { (vehicles.length > 0) ? 
+              <SectionHeader text={"Vehicles"}/>
+              : null}
+            {vehicles.map((vehicle) => (
+              <DataCell key={vehicle.name} title={vehicle.name} value={''}/>
+            ))}
             </>
-          )
-        )
       }
     </main>      
   )
 }
 
 export default withRouter(PersonDetails);
-// export default PersonDetails;
+
