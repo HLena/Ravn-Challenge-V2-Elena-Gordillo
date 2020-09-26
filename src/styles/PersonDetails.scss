@@ -1,0 +1,28 @@
+.container{
+  width: calc(100% - 350px);
+  position: relative;
+  left: 350px;
+  top: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .data-cell{
+    min-height: 49px;
+    min-width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    h2.title-tx{
+      font-size: 17px;
+      display: inline-block;
+      color: $TextLight;
+      margin-left: 16px;
+    }
+    h2.value-tx{
+      font-size: 17px;
+      color: $TextDark;
+      margin-right: 16px;
+    }
+  }
+}
