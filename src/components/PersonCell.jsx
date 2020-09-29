@@ -1,5 +1,5 @@
 import React from 'react'
-import vector from '../svg/Vector.svg'
+import vector from '../resources/Vector.svg'
 
 export const PersonCell = ({node}) => {
   const {name, homeworld, species} = node;
